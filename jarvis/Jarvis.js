@@ -8,7 +8,6 @@ const configuration = new Configuration({
 
 class Jarvis {
   openai = new OpenAIApi(configuration);
-  // constructor();
 
   askQuestion = async (question) => {
     try {
@@ -25,8 +24,8 @@ class Jarvis {
       return answer.data;
     } catch (error) {
         return error;
-    }
-  }
-}
+    };
+  };
+};
 
 module.exports = Jarvis;

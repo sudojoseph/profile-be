@@ -16,7 +16,6 @@ app.post('/jarvis', async(req, res) => {
     const customErrorMessage = 'Sorry my servers at Open AI seem overwelmed at the moment. Please try again a bit later. Than I can tell you all about Joseph!';
     try {
       const resp = await jarvis.askQuestion(req.body.question);
-      console.log("🚀 ~ file: server.js:19 ~ app.post ~ resp", resp)
       res.send(resp);
     } catch (error) {
       response.status(500).json({message: customErrorMessage});
@@ -24,17 +23,12 @@ app.post('/jarvis', async(req, res) => {
 });
 
 app.post('/telegram', async(req, res) => {
-  console.log('sadfsadfs');
   const responce = await messageTelegram.sendMessage(req.body.message);
   if (responce.status === 200) {
     res.status(200).json({message: 'Successfully Send!'});
   } else {
     res.status(500).json({message: 'Oops something whent wrong! Try again!'});
   }
-});
-
-app.get('/', async(req, res) => {
-  res.send('hello world');
 });
 
 const PORT = process.env.PORT || 8080;
